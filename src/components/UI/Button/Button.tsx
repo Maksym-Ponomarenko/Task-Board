@@ -8,7 +8,7 @@ interface IBtnProps {
 
 const Button:FC<IBtnProps> = ({children, ...props}) => {
     return (
-        <button className={styles.button} {...props}>
+        <button className={styles.button} {...props} >
             {children}
         </button>
     );

@@ -26,6 +26,7 @@ const Auth = () => {
     const [firebaseError, setFirebaseError] = useState("")
     const [wasSubmitted, setWasSubmitted] = useState(false)
     const [hideComponent, setHideComponent] = useState(false)
+    const [token, setToken] = useState(false)
 
     useEffect(() => {
         setValidationError("")
@@ -41,12 +42,12 @@ const Auth = () => {
     }, [])
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             setTimeout(() => {
                 setHideComponent(true)
-            }, 600)
+            }, 300)
         }
-    }, [user])
+    }, [token])
     useEffect(() => {
         if (user) {
             user.getIdToken()
@@ -61,8 +62,7 @@ const Auth = () => {
                         console.error("Failed to set token cookie");
                     } else {
                         console.log("Token cookie set");
-                        // Возможно, обновить страницу:
-                        // window.location.reload();
+                        setToken(true)
                     }
                 })
                 .catch((err) => {
